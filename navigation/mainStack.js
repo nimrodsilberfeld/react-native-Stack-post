@@ -22,7 +22,7 @@ export const MainStack = (props) => {
             },
             headerTintColor: 'black',
             headerTitleAlign: "left",
-            headerTitle: () => <MyText style={{ fontSize: 20, color: "#fff" }}>Stack' Post</MyText>,
+            headerTitle: () => <MyText style={{ fontSize: 24, color: "#fff" }}>Stack' Post</MyText>,
             headerRight: () => <Ionicons color={"#fff"} name={darkTheme ? "moon-outline" : "sunny-outline"} size={24} onPress={toggleThemePress} />
         }}
     >

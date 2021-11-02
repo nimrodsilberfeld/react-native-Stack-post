@@ -42,6 +42,7 @@ export default function UserCard({ userInfo }) {
 
 const s = StyleSheet.create({
     screen: {
+    
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -56,7 +57,7 @@ const s = StyleSheet.create({
         alignItems: 'center',
     },
     topInfo: {
-        height: '25%',
+        height: '30%',
         width: '90%',
         alignSelf: 'center',
         flexDirection: 'row',

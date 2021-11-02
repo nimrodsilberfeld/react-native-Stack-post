@@ -6,25 +6,26 @@ import { getUserInfo } from '../fetch/fetch';
 import UserCard from '../components/UserCard';
 import colors from '../constans/colors';
 import { ThemeContext } from '../utils/ThemeProvider';
+import { MyText } from '../components/MyText';
 export default function MainPage() {
     const { darkTheme } = useContext(ThemeContext)
     const [search, setSearch] = useState('')
     const [userInfo, setUserInfo] = useState([])
-    const [foundUser, setFoundUser] = useState(false)
+    const [foundUser, setFoundUser] = useState(true)
     const [isFetching, setisFetching] = useState(false)
     const changeTextHandler = (text) => {
         setSearch(text)
-        setFoundUser(false)
+        setFoundUser(true)
         setUserInfo([])
     }
 
     const searchHandler = () => {
-        setFoundUser(false)
+        if (!search) { return }
         setUserInfo([])
         setisFetching(true)
         getUserInfo(search)
             .then((userInfo) => {
-                if (userInfo[0]?.owner) {
+                if (userInfo) {
                     setUserInfo(userInfo)
                     setFoundUser(true)
                 } else {
@@ -56,15 +57,22 @@ export default function MainPage() {
                 />
                 <Entypo style={{ marginHorizontal: 5 }} name="magnifying-glass" size={24} color="black" />
             </View>
-            {isFetching &&
+            {!foundUser &&
+                < View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center' }}>
+                    <MyText>No user found</MyText>
+                </View>
+            }
+            {
+                isFetching &&
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <ActivityIndicator size={"large"} color={darkTheme ? "white" : colors('primary')} />
                 </View>
             }
-            {foundUser &&
+            {
+                userInfo.length > 0 &&
                 <UserCard userInfo={userInfo} />
             }
-        </View>
+        </View >
     )
 }
 
