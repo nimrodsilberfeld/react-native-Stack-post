@@ -55,6 +55,7 @@ const s = StyleSheet.create({
         paddingHorizontal: 10,
         justifyContent: 'space-between',
         alignItems: 'center',
+        // paddingBottom:10
     },
     topInfo: {
         height: '30%',

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { ActivityIndicator, StyleSheet, View } from 'react-native'
+import { ActivityIndicator, StatusBar, StyleSheet, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import { Entypo } from '@expo/vector-icons';
 import { getUserInfo } from '../fetch/fetch';
@@ -42,6 +42,7 @@ export default function MainPage() {
 
     return (
         <View style={[s.screen, { backgroundColor: colors('semiBack', darkTheme), }]}>
+            <StatusBar backgroundColor="black"/>
             <View style={s.searchBox}>
                 <TextInput
                     style={s.textInput}
@@ -84,7 +85,7 @@ const s = StyleSheet.create({
         alignItems: 'center'
     },
     searchBox: {
-        marginTop: 10,
+        marginVertical: 10,
         flexDirection: 'row',
         backgroundColor: '#eee',
         width: '90%',

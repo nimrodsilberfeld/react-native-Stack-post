@@ -95,6 +95,7 @@ const s = StyleSheet.create({
     },
     listItems: {
         flex: 1,
+        paddingBottom:20
         // backgroundColor: colors('background')
     },
     btnTab: {
